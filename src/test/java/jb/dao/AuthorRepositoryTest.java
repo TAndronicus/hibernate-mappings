@@ -15,6 +15,8 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -35,6 +37,8 @@ public class AuthorRepositoryTest {
         hawking = authorRepository.save(hawking);
         penrose = authorRepository.save(penrose);
 
+        assertTrue(authorRepository.findByLastName("Hawking").isPresent());
+
         Author finalHawking = hawking;
         Author finalPenrose = penrose;
 
@@ -46,6 +50,8 @@ public class AuthorRepositoryTest {
         rr = bookRepository.save(rr);
         bht = bookRepository.save(bht);
 
+        assertFalse(bookRepository.findBooksByTitleLike("%nature%").isEmpty());
+
         nst.authors(new HashSet<Author>() {{
             add(finalHawking);
             add(finalPenrose);
@@ -56,6 +62,9 @@ public class AuthorRepositoryTest {
         bht.authors(new HashSet<Author>() {{
             add(finalHawking);
         }});
+
+        Book nature = bookRepository.findBooksByTitleLike("%space%").get(0);
+        assertThat(nature.getAuthors().size(), is(equalTo(2)));
 
         Book finalNst = nst;
         Book finalBht = bht;
@@ -69,7 +78,7 @@ public class AuthorRepositoryTest {
             add(finalRr);
         }});
 
-        List<Book> spaceBooks = bookRepository.findBooksByTitleLike("space");
+        List<Book> spaceBooks = bookRepository.findBooksByTitleLike("%space%");
         assertThat(spaceBooks.size(), is(equalTo(1)));
         assertThat(spaceBooks.get(0).getAuthors().size(), is(equalTo(2)));
     }

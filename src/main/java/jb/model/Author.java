@@ -10,8 +10,11 @@ public class Author extends AbstractEntity {
 
     private String lastName;
 
-//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, mappedBy = "authors")
-//    private Set<Book> books;
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(name = "author_book",
+            joinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"))
+    private Set<Book> books;
 
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
@@ -34,13 +37,13 @@ public class Author extends AbstractEntity {
         this.lastName = lastName;
     }
 
-//    public Set<Book> getBooks() {
-//        return books;
-//    }
-//
-//    public void setBooks(Set<Book> books) {
-//        this.books = books;
-//    }
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
 
     public Author firstName(final String firstName) {
         this.firstName = firstName;
@@ -52,9 +55,9 @@ public class Author extends AbstractEntity {
         return this;
     }
 
-//    public Author books(final Set<Book> books) {
-//        this.books = books;
-//        return this;
-//    }
+    public Author books(final Set<Book> books) {
+        this.books = books;
+        return this;
+    }
 
 }
