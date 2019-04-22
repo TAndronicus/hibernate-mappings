@@ -1,10 +1,8 @@
 package jb.model;
 
-import lombok.Data;
 
 import javax.persistence.*;
 
-@Data
 @MappedSuperclass
 @SequenceGenerator(name = "seq", sequenceName = "seq")
 class AbstractEntity {
