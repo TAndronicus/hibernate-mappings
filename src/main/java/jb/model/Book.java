@@ -1,6 +1,8 @@
 package jb.model;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @Entity
@@ -13,6 +15,12 @@ public class Book extends AbstractEntity {
             joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"))
     private Set<Author> authors;
+
+    @OneToMany(mappedBy = "book")
+    @MapKey
+    private Map<Long, Review> reviews;
+//    @OneToMany(mappedBy = "book")
+//    private List<Review> reviews;
 
     public Book(String title) {
         this.title = title;
@@ -34,6 +42,23 @@ public class Book extends AbstractEntity {
         this.authors = authors;
     }
 
+    public Map<Long, Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Map<Long, Review> reviews) {
+        this.reviews = reviews;
+    }
+
+
+//    public List<Review> getReviews() {
+//        return reviews;
+//    }
+//
+//    public void setReviews(List<Review> reviews) {
+//        this.reviews = reviews;
+//    }
+
     public Book title(final String title) {
         this.title = title;
         return this;
@@ -44,4 +69,6 @@ public class Book extends AbstractEntity {
         return this;
     }
 
+    public Book() {
+    }
 }

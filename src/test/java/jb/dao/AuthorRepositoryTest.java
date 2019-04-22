@@ -83,4 +83,5 @@ public class AuthorRepositoryTest {
         assertThat(spaceBooks.size(), is(equalTo(1)));
         assertThat(spaceBooks.get(0).getAuthors().size(), is(equalTo(2)));
     }
+
 }
