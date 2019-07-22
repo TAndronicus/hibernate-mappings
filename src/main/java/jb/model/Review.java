@@ -6,20 +6,20 @@ import javax.persistence.*;
 public class Review extends AbstractEntity {
 
     private Short grade;
-    private String comment;
+    private String reviewComment;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
 
-    public Review(Short grade, String comment, Book book) {
+    public Review(Short grade, String reviewComment, Book book) {
         this.grade = grade;
-        this.comment = comment;
+        this.reviewComment = reviewComment;
         this.book = book;
     }
 
-    public Review(Short grade, String comment) {
+    public Review(Short grade, String reviewComment) {
         this.grade = grade;
-        this.comment = comment;
+        this.reviewComment = reviewComment;
     }
 
     public Review() {
@@ -33,12 +33,12 @@ public class Review extends AbstractEntity {
         this.grade = grade;
     }
 
-    public String getComment() {
-        return comment;
+    public String getReviewComment() {
+        return reviewComment;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setReviewComment(String reviewComment) {
+        this.reviewComment = reviewComment;
     }
 
     public Book getBook() {
