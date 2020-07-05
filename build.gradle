@@ -21,6 +21,11 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-jta-bitronix'
+    implementation 'com.vladmihalcea:db-util:1.0.4'
+    implementation 'net.ttddyy:datasource-proxy:1.5.1'
     runtimeOnly 'org.postgresql:postgresql'
     runtimeOnly 'com.ibm.db2:jcc:11.5.0.0'
     runtimeOnly 'mysql:mysql-connector-java:8.0.16'
