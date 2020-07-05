@@ -1,16 +1,41 @@
 package jb;
 
+import com.vladmihalcea.sql.SQLStatementCountValidator;
+import jb.service.ReviewService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(SpringRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = {"classpath:applicationContext-test.xml"})
 @SpringBootTest
 public class HibernateMappingsApplicationTests {
 
+//    @Autowired
+//    private BookRepository bookRepository;
+//
+//    @Autowired
+//    private ReviewRepository reviewRepository;
+
+    @Autowired
+    private ReviewService reviewService;
+
     @Test
     public void contextLoads() {
+    }
+
+    @Test
+    public void findNPlusOne() {
+        SQLStatementCountValidator.reset();
+        reviewService.createMockData();
+        SQLStatementCountValidator.assertInsertCount(0);
+        SQLStatementCountValidator.assertSelectCount(0);
+        SQLStatementCountValidator.assertDeleteCount(0);
+        SQLStatementCountValidator.assertUpdateCount(0);
+//        assertThat(bookRepository.findAll().size(), is(equalTo(1)));
+//        assertThat(reviewRepository.findAll().size(), is(equalTo(10)));
     }
 
 }
