@@ -2,14 +2,14 @@ package jb.service;
 
 import jb.dao.AuthorRepository;
 import jb.model.Author;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class AuthorService {
 
-    @Autowired
-    private AuthorRepository authorRepository;
+    private final AuthorRepository authorRepository;
 
     public Author getById(Long id) {
         return authorRepository.getOne(id);

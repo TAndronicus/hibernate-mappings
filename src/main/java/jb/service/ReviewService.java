@@ -3,7 +3,7 @@ package jb.service;
 import jb.dao.ReviewRepository;
 import jb.model.Book;
 import jb.model.Review;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -11,10 +11,10 @@ import java.util.Random;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class ReviewService {
 
-    @Autowired
-    private ReviewRepository reviewRepository;
+    private final ReviewRepository reviewRepository;
 
     @Transactional
     public void createMockData() {
