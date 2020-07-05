@@ -1,6 +1,9 @@
 package jb.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.CascadeType;
@@ -16,9 +19,14 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Book extends AbstractEntity {
 
     private String title;
+
+    private int year;
 
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "author_book",
@@ -44,6 +52,4 @@ public class Book extends AbstractEntity {
         return this;
     }
 
-    public Book() {
-    }
 }

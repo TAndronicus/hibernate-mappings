@@ -1,7 +1,10 @@
 package jb.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.CascadeType;
@@ -15,6 +18,9 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Author extends AbstractEntity {
 
     private String firstName;
@@ -31,9 +37,6 @@ public class Author extends AbstractEntity {
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public Author() {
     }
 
     public Author firstName(final String firstName) {
