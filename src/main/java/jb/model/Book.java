@@ -1,11 +1,21 @@
 package jb.model;
 
-import javax.persistence.*;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.MapKey;
+import javax.persistence.OneToMany;
 import java.util.Map;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class Book extends AbstractEntity {
 
     private String title;
@@ -19,45 +29,10 @@ public class Book extends AbstractEntity {
     @OneToMany(mappedBy = "book")
     @MapKey
     private Map<Long, Review> reviews;
-//    @OneToMany(mappedBy = "book")
-//    private List<Review> reviews;
 
     public Book(String title) {
         this.title = title;
     }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Set<Author> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(Set<Author> authors) {
-        this.authors = authors;
-    }
-
-    public Map<Long, Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(Map<Long, Review> reviews) {
-        this.reviews = reviews;
-    }
-
-
-//    public List<Review> getReviews() {
-//        return reviews;
-//    }
-//
-//    public void setReviews(List<Review> reviews) {
-//        this.reviews = reviews;
-//    }
 
     public Book title(final String title) {
         this.title = title;

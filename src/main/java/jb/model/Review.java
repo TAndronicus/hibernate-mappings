@@ -1,5 +1,8 @@
 package jb.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
+@Getter
+@Setter
 public class Review extends AbstractEntity {
 
     private Short grade;
@@ -27,30 +32,6 @@ public class Review extends AbstractEntity {
     }
 
     public Review() {
-    }
-
-    public Short getGrade() {
-        return grade;
-    }
-
-    public void setGrade(Short grade) {
-        this.grade = grade;
-    }
-
-    public String getReviewComment() {
-        return reviewComment;
-    }
-
-    public void setReviewComment(String reviewComment) {
-        this.reviewComment = reviewComment;
-    }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
     }
 
 }

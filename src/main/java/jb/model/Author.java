@@ -1,6 +1,8 @@
 package jb.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,6 +13,8 @@ import javax.persistence.ManyToMany;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class Author extends AbstractEntity {
 
     private String firstName;
@@ -30,30 +34,6 @@ public class Author extends AbstractEntity {
     }
 
     public Author() {
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Set<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Set<Book> books) {
-        this.books = books;
     }
 
     public Author firstName(final String firstName) {
