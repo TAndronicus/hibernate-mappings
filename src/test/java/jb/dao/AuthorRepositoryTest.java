@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
-import java.io.BufferedReader;
 import java.util.HashSet;
 import java.util.List;
 
@@ -53,14 +52,14 @@ public class AuthorRepositoryTest {
 
         assertFalse(bookRepository.findBooksByTitleLike("%nature%").isEmpty());
 
-        nst.authors(new HashSet<Author>() {{
+        nst.authors(new HashSet<>() {{
             add(finalHawking);
             add(finalPenrose);
         }});
-        rr.authors(new HashSet<Author>() {{
+        rr.authors(new HashSet<>() {{
             add(finalPenrose);
         }});
-        bht.authors(new HashSet<Author>() {{
+        bht.authors(new HashSet<>() {{
             add(finalHawking);
         }});
 
@@ -70,11 +69,11 @@ public class AuthorRepositoryTest {
         Book finalNst = nst;
         Book finalBht = bht;
         Book finalRr = rr;
-        hawking.setBooks(new HashSet<Book>() {{
+        hawking.setBooks(new HashSet<>() {{
             add(finalNst);
             add(finalBht);
         }});
-        penrose.setBooks(new HashSet<Book>() {{
+        penrose.setBooks(new HashSet<>() {{
             add(finalNst);
             add(finalRr);
         }});

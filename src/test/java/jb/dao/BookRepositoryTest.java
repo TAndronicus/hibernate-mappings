@@ -9,20 +9,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BookRepositoryTest {
-
-    @Autowired
-    private BookRepository bookRepository;
 
     @Autowired
     private ReviewRepository reviewRepository;
@@ -33,7 +29,6 @@ public class BookRepositoryTest {
     @Test
     public void shouldSaveData() {
         Book nst = new Book("The nature of space and time");
-//        nst = bookRepository.save(nst);
 
         Review r1 = new Review((short) 3, "meh", nst);
         reviewRepository.save(r1);
