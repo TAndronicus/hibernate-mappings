@@ -5,6 +5,7 @@ import jb.service.BookService;
 import lombok.RequiredArgsConstructor;
 import net.kaczmarzyk.spring.data.jpa.domain.Equal;
 import net.kaczmarzyk.spring.data.jpa.domain.GreaterThan;
+import net.kaczmarzyk.spring.data.jpa.domain.Like;
 import net.kaczmarzyk.spring.data.jpa.web.annotation.Or;
 import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 import org.springframework.data.domain.Page;
@@ -19,15 +20,15 @@ public class BookRest {
 
     private final BookService bookService;
 
-    @GetMapping
+    @GetMapping("/books")
     public Page<Book> getBooks(
             @Or({
-                    @Spec(path = "title", spec = Equal.class),
+                    @Spec(path = "title", spec = Like.class),
                     @Spec(path = "year", spec = GreaterThan.class)
-            }) Specification<Book> bookSpecification,
-            Pageable pageable
+            }) Specification<Book> bookSpecification//,
+//            Pageable pageable
     ) {
-        return bookService.getBooks(bookSpecification, pageable);
+        return bookService.getBooks(bookSpecification, Pageable.unpaged());
     }
 
 }
