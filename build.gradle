@@ -33,4 +33,5 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java:8.0.16'
     runtimeOnly 'com.oracle.database.jdbc:ojdbc8:19.3.0.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    annotationProcessor 'org.projectlombok:lombok:1.18.4'
 }
