@@ -1,5 +1,6 @@
 package jb.dao;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static java.lang.Math.pow;
@@ -11,6 +12,7 @@ import static org.quicktheories.generators.SourceDSL.integers;
 public class QuickTheoriesTest {
 
     @Test
+    @Ignore
     public void withAssert() {
         qt()
                 .forAll(integers().all(), integers().all())
