@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.List;
@@ -27,6 +28,9 @@ public class AuthorRepositoryTest {
 
     @Autowired
     private BookRepository bookRepository;
+
+    @Autowired
+    private EntityManager entityManager;
 
     @Test
     @Transactional
@@ -50,6 +54,7 @@ public class AuthorRepositoryTest {
         rr = bookRepository.save(rr);
         bht = bookRepository.save(bht);
 
+        entityManager.flush();
         assertFalse(bookRepository.findBooksByTitleLike("%nature%").isEmpty());
 
         nst.authors(new HashSet<>() {{
@@ -63,6 +68,7 @@ public class AuthorRepositoryTest {
             add(finalHawking);
         }});
 
+        entityManager.flush();
         Book nature = bookRepository.findBooksByTitleLike("%space%").get(0);
         assertThat(nature.getAuthors().size(), is(equalTo(2)));
 

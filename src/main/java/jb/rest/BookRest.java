@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -39,6 +40,11 @@ public class BookRest {
             Pageable pageable
     ) {
         return bookService.getBooks(bookSpecification, pageable);
+    }
+
+    @GetMapping("/book/{id}")
+    public Book getById(@PathVariable("id") Long bookId) {
+        return bookService.getById(bookId);
     }
 
 }

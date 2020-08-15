@@ -18,4 +18,9 @@ public class BookService {
         return bookRepository.findAll(bookSpecification, pageable);
     }
 
+    public Book getById(Long bookId) {
+        return bookRepository.findById(bookId)
+                .get();
+    }
+
 }

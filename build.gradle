@@ -2,9 +2,12 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.3.1.RELEASE'
     id 'info.solidsoft.pitest' version '1.5.1'
+    id 'org.checkerframework' version '0.5.9'
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'java'
+apply plugin: 'org.checkerframework'
 
 group = 'jb'
 version = '0.0.1-SNAPSHOT'
@@ -14,6 +17,19 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+}
+
+checkerFramework {
+    checkers = [
+//            'org.checkerframework.checker.nullness.NullnessChecker',
+            'org.checkerframework.common.value.ValueChecker',
+            'org.checkerframework.checker.optional.OptionalChecker',
+            'org.checkerframework.framework.util.PurityChecker'
+    ]
+    excludeTests = true
+    extraJavacArgs = [
+            '-AcheckPurityAnnotations'
+    ]
 }
 
 repositories {
