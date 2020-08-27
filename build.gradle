@@ -45,6 +45,7 @@ dependencies {
     implementation 'net.ttddyy:datasource-proxy:1.5.1'
     implementation 'org.projectlombok:lombok:1.18.12'
     implementation 'net.kaczmarzyk:specification-arg-resolver:2.4.1'
+    implementation 'nl.jqno.equalsverifier:equalsverifier:3.4.2'
     runtimeOnly 'org.postgresql:postgresql'
     runtimeOnly 'com.ibm.db2:jcc:11.5.0.0'
     runtimeOnly 'mysql:mysql-connector-java:8.0.16'
