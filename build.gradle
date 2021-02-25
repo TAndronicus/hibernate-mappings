@@ -48,6 +48,7 @@ dependencies {
     implementation 'net.kaczmarzyk:specification-arg-resolver:2.4.1'
     implementation 'nl.jqno.equalsverifier:equalsverifier:3.4.2'
     implementation 'ru.lanwen.verbalregex:java-verbal-expressions:1.6'
+    implementation group: 'com.google.mug', name: 'mug', version: '5.2'
     runtimeOnly 'org.postgresql:postgresql'
     runtimeOnly 'com.ibm.db2:jcc:11.5.0.0'
     runtimeOnly 'mysql:mysql-connector-java:8.0.16'
