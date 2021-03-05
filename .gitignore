@@ -29,3 +29,7 @@ transaction-logs
 
 ### Oracle image ###
 src/main/resources/oracle/19.3.0/LINUX.X64_193000_db_home.zip
+src/test/resources/cert.png
+src/test/resources/measurements.pdf
+src/test/resources/oceny.xlsx
+src/test/resources/plain.txt
