@@ -11,8 +11,10 @@ public class PrimeGenerator extends Iteration<Integer> {
 	}
 
 	PrimeGenerator next(int current) {
+		/* Doesn't work on Java 15+
 		if (isPrime(current)) yield(current);
 		yield(() -> next(current + 1));
+		 */
 		return this;
 	}
 }
