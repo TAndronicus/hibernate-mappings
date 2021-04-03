@@ -56,4 +56,6 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     annotationProcessor 'org.projectlombok:lombok:1.18.4'
     compile 'org.eclipse.xtend:org.eclipse.xtend.lib:2.22.0'
+    implementation "org.functionaljava:functionaljava:4.8.1"
+    implementation "org.functionaljava:functionaljava-java-core:4.8.1"
 }
