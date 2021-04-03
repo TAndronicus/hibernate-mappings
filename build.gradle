@@ -2,17 +2,17 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.3.1.RELEASE'
     id 'info.solidsoft.pitest' version '1.5.1'
-    id 'org.checkerframework' version '0.5.9'
+//    id 'org.checkerframework' version '0.5.9'
     id "org.xtext.xtend" version "2.0.8"
 }
 
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'java'
-apply plugin: 'org.checkerframework'
+//apply plugin: 'org.checkerframework'
 
 group = 'jb'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '15'
 
 configurations {
     compileOnly {
@@ -20,6 +20,7 @@ configurations {
     }
 }
 
+/* Doesn't work on java 13+
 checkerFramework {
     checkers = [
 //            'org.checkerframework.checker.nullness.NullnessChecker',
@@ -32,6 +33,7 @@ checkerFramework {
             '-AcheckPurityAnnotations'
     ]
 }
+ */
 
 repositories {
     mavenCentral()
@@ -47,6 +49,12 @@ dependencies {
     implementation 'org.projectlombok:lombok:1.18.12'
     implementation 'net.kaczmarzyk:specification-arg-resolver:2.4.1'
     implementation 'nl.jqno.equalsverifier:equalsverifier:3.4.2'
+    implementation 'ru.lanwen.verbalregex:java-verbal-expressions:1.6'
+    implementation group: 'com.google.mug', name: 'mug', version: '5.2'
+    implementation 'com.speedment.jpastreamer:jpastreamer-core:1.0.1'
+    implementation group: 'com.speedment.jpastreamer.integration.spring', name: 'spring-boot-jpastreamer-autoconfigure', version: '1.0.1'
+    implementation group: 'org.apache.tika', name: 'tika-parsers', version: '1.25'
+    implementation 'com.github.jsqlparser:jsqlparser:4.0'
     runtimeOnly 'org.postgresql:postgresql'
     runtimeOnly 'com.ibm.db2:jcc:11.5.0.0'
     runtimeOnly 'mysql:mysql-connector-java:8.0.16'
