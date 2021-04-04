@@ -2,17 +2,17 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.3.1.RELEASE'
     id 'info.solidsoft.pitest' version '1.5.1'
-//    id 'org.checkerframework' version '0.5.9'
-    id "org.xtext.xtend" version "2.0.8"
+    id 'org.checkerframework' version '0.5.9'
+//    id "org.xtext.xtend" version "2.0.8"
 }
 
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'java'
-//apply plugin: 'org.checkerframework'
+apply plugin: 'org.checkerframework'
 
 group = 'jb'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '15'
+sourceCompatibility = '11'
 
 configurations {
     compileOnly {
@@ -20,7 +20,6 @@ configurations {
     }
 }
 
-/* Doesn't work on java 13+
 checkerFramework {
     checkers = [
 //            'org.checkerframework.checker.nullness.NullnessChecker',
@@ -33,7 +32,6 @@ checkerFramework {
             '-AcheckPurityAnnotations'
     ]
 }
- */
 
 repositories {
     mavenCentral()
@@ -63,7 +61,8 @@ dependencies {
     testImplementation 'org.quicktheories:quicktheories:0.26'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     annotationProcessor 'org.projectlombok:lombok:1.18.4'
-    compile 'org.eclipse.xtend:org.eclipse.xtend.lib:2.22.0'
+//    compile 'org.eclipse.xtend:org.eclipse.xtend.lib:2.22.0'
     implementation "org.functionaljava:functionaljava:4.8.1"
     implementation "org.functionaljava:functionaljava-java-core:4.8.1"
+    implementation 'am.ik.yavi:yavi:0.5.0'
 }
