@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.3.1.RELEASE'
+    id 'org.springframework.boot' version '2.4.5'
     id 'info.solidsoft.pitest' version '1.5.1'
     id 'org.checkerframework' version '0.5.9'
 //    id "org.xtext.xtend" version "2.0.8"
@@ -65,4 +65,12 @@ dependencies {
     implementation "org.functionaljava:functionaljava:4.8.1"
     implementation "org.functionaljava:functionaljava-java-core:4.8.1"
     implementation 'am.ik.yavi:yavi:0.5.0'
+    implementation group: 'systems.manifold', name: 'manifold', version: '2021.1.10'
+    implementation group: 'systems.manifold', name: 'manifold-ext', version: '2021.1.10'
+    implementation group: 'org.asynchttpclient', name: 'async-http-client', version: '2.12.3'
+    implementation 'io.rest-assured:rest-assured:4.3.3'
+    implementation 'io.rest-assured:json-path:4.3.3'
+    implementation 'io.rest-assured:xml-path:4.3.3'
+    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+    implementation group: 'com.oath.cyclops', name: 'cyclops', version: '10.4.0'
 }
