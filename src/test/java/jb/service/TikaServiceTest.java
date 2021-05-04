@@ -2,6 +2,7 @@ package jb.service;
 
 import org.apache.tika.Tika;
 import org.apache.tika.exception.TikaException;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -36,6 +37,7 @@ public class TikaServiceTest {
     }
 
     @Test
+    @Ignore
     public void shouldParseAutomatically() throws IOException, TikaException {
         InputStream inputStream = Files.newInputStream(Paths.get("src/test/resources/plain.txt"));
         System.out.println(tika.parseToString(inputStream));

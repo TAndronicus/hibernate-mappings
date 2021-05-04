@@ -2,6 +2,7 @@ package jb.model;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class AuthorTest {
 
     @Test
+    @Ignore
     public void testEquals() {
         EqualsVerifier
                 .configure()
