@@ -52,4 +52,8 @@ public class Book extends AbstractEntity {
         return this;
     }
 
+    public String type() {
+        return "General";
+    }
+
 }
