@@ -70,6 +70,7 @@ dependencies {
     implementation 'io.rest-assured:xml-path:4.3.3'
     implementation group: 'com.oath.cyclops', name: 'cyclops', version: '10.4.0'
     implementation group: 'com.ea.async', name: 'ea-async', version: '1.2.3'
+    implementation 'com.machinezoo.noexception:noexception:1.6.2'
     testImplementation("org.assertj:assertj-core:3.11.1")
     testImplementation 'org.quicktheories:quicktheories:0.26'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
