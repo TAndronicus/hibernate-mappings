@@ -1,9 +1,9 @@
 package jb.service;
 
+import com.github.oxo42.stateless4j.StateMachine;
 import com.github.oxo42.stateless4j.StateMachineConfig;
 import jb.model.ThreadState;
 import jb.model.ThreadTransition;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 
@@ -28,10 +28,9 @@ import static jb.model.ThreadTransition.WAIT;
 import static jb.model.ThreadTransition.WAITING_FOR_LOCK;
 import static jb.model.ThreadTransition.WAIT_TIMEOUT;
 
-@Service
-public class ThreadStatesService {
+public class ThreadStatesMachineFactory {
 
-    StateMachineConfig<ThreadState, ThreadTransition> config = new StateMachineConfig<>();
+    private static final StateMachineConfig<ThreadState, ThreadTransition> config = new StateMachineConfig<>();
 
     @PostConstruct
     public void setup() {
@@ -55,5 +54,13 @@ public class ThreadStatesService {
                 .permit(LOCK_ACQUIRED, RUNNING);
         config.configure(RUNNING)
                 .permit(EXIT, TERMINATED);
+    }
+
+    public StateMachineConfig<ThreadState, ThreadTransition> getConfig() {
+        return config;
+    }
+
+    public StateMachine<ThreadState, ThreadTransition> pure() {
+        return new StateMachine<>(NEW, config);
     }
 }
